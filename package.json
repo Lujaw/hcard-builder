@@ -1,0 +1,17 @@
+{
+  "name": "hcard-builder",
+  "version": "1.0.0",
+  "description": "hcard builder",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hcard",
+    "express",
+    "react",
+    "ssr"
+  ],
+  "author": "Luja Shrestha",
+  "license": "ISC"
+}
