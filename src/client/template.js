@@ -8,15 +8,15 @@ export default ({ body, title, initialState }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script>window.__INITIAL_STATE__ = ${initialState}</script>
         <title>${title}</title>
-        <link href="/static/public/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="/static/public/css/main.css" rel="stylesheet" />
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/static/css/main.css" rel="stylesheet" />
       </head>
       
       <body>
         <div id="root">${body}</div>
       </body>
       
-      <script src="/static/public/bundle.js"></script>
+      <script src="/static/bundle.js"></script>
     </html>
   `;
 };

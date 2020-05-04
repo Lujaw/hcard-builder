@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
@@ -11,6 +11,28 @@ const js = {
     options: {
       "presets": ["@babel/preset-env", "@babel/preset-react"]
     }
+  }
+}
+
+const serverConfig = {
+  mode: 'development',
+  target: 'node',
+  node: {
+    __dirname: false
+  },
+  externals: [nodeExternals()],
+  entry: {
+    'index.js': path.resolve(__dirname, 'src/server.js')
+  },
+  module: {
+    rules: [js]
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name]'
+  },
+  watchOptions: {
+    ignored: ['database/*.json', 'node_modules/**']
   }
 }
 
@@ -29,13 +51,13 @@ const clientConfig = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'src/client/assets', to: 'public' },
+      { from: 'src/client/assets' }
     ]),
   ]
 }
 
 
-var configuration = [clientConfig];
+var configuration = [serverConfig, clientConfig];
 configuration.watch = true;
 
 
