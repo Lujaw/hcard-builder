@@ -14,25 +14,37 @@ const js = {
   }
 };
 
+const json = {
+  test: /\.json$/,
+  loader: "json-loader",
+  type: "javascript/auto"
+};
+
 const serverConfig = {
   mode: "development",
   target: "node",
   node: {
-    __dirname: false
+    __dirname: false,
+    __filename: false
   },
   externals: [nodeExternals()],
   entry: {
     "index.js": path.resolve(__dirname, "src/server.js")
   },
   module: {
-    rules: [js]
+    rules: [js, json]
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name]"
   },
+  plugins: [
+    new CopyWebpackPlugin([
+      { from: "src/models" }
+    ])
+  ],
   watchOptions: {
-    ignored: ["database/*.json", "node_modules/**"]
+    ignored: ["node_modules/**"]
   }
 };
 
