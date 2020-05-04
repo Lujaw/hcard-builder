@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 
 global.React = React;
-const Hcard = require("./hCard.js").default;
+const Hcard = require("./hCard.min.js").default;
 
 render
   (
