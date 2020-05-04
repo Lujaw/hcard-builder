@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       houseNumber: {
-        type: Sequelize.NUMBER
+        type: Sequelize.STRING
       },
       street: {
         type: Sequelize.STRING
@@ -33,7 +33,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       postcode: {
-        type: Sequelize.NUMBER
+        type: Sequelize.STRING
       },
       country: {
         type: Sequelize.STRING
