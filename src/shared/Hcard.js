@@ -7,14 +7,13 @@ class Hcard extends Component {
   constructor(props) {
     super(props)
 
-    let cardData
+    let cardData;
     if (__isBrowser__) {
       cardData = window.__HCARD_DATA__
       delete window.__HCARD_DATA__
     } else {
-      cardData = this.props.staticContext.data
+      cardData = this.props.staticContext
     }
-    console.log('Hcard#17->>>', { cardData });
 
     this.state = {
       cardData,
@@ -39,7 +38,7 @@ class Hcard extends Component {
     }))
 
     this.props.fetchInitialData(card)
-      .then((card) => this.setState(() => ({
+      .then((cardData) => this.setState(() => ({
         cardData,
         loading: false,
       })))
