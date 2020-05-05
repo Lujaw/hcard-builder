@@ -13,8 +13,5 @@ module.exports = (sequelize, DataTypes) => {
     country: DataTypes.STRING,
     avatar: DataTypes.STRING
   }, {});
-  Card.associate = function(models) {
-    // associations can be defined here
-  };
   return Card;
 };
