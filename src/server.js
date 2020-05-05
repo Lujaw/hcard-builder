@@ -29,7 +29,6 @@ app.get('/card/:id', (req, res) => {
   const id = parseInt(req.params.id);
   return db.Card.findByPk(id)
     .then(({ dataValues }) => {
-      console.log('server#32->>>', { dataValues, id });
       const views = view.renderCardTemplate(dataValues);
       res.send(views);
     })
@@ -40,9 +39,16 @@ app.get('/card/:id', (req, res) => {
 });
 
 app.post("/submit", (req, res) => {
+  console.log('server#42->>>', { id: req.headers["card-id"] });
   db.Card.create(req.body)
     .then(card => res.json(card))
 });
+
+app.post("/update", (req, res) => {
+  const { id, ...values } = req.body;
+  db.Card.update(values, { where: { id } })
+    .then(card => res.json(card))
+})
 
 app.listen(3000, () => {
   console.log("listening on port 3000");
