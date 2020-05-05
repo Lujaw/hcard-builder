@@ -6,6 +6,6 @@ const Hcard = require("./hCard.min.js").default;
 
 render
   (
-    <Hcard {...window.__INITIAL_STATE__} />,
+    <Hcard {...window.__HCARD_STATE__} />,
     document.getElementById("root")
   );

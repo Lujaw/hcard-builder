@@ -10,7 +10,7 @@ const initialData = {
 
 const renderCardToString = (data) =>
   ReactDOMServer.renderToString(
-      <HcardComponent {...data} />
+    <HcardComponent {...data} />
   );
 
 const renderCardTemplate = (card = initialData) => template({
