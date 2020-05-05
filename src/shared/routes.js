@@ -1,5 +1,5 @@
-import Hcard from './Hcard';
-import { fetchCard } from './api';
+import Hcard from "./Hcard";
+import { fetchCard } from "./api";
 
 const routes = [
   // {
@@ -8,10 +8,10 @@ const routes = [
   //   component: Home,
   // },
   {
-    path: '/card/:id',
+    path: "/card/:id",
     component: Hcard,
-    fetchInitialData: (path = '') => fetchCard(path.split('/').pop())
+    fetchInitialData: (path = "") => fetchCard(path.split("/").pop())
   }
-]
+];
 
 export default routes;

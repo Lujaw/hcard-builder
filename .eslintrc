@@ -15,6 +15,7 @@
     "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
+    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     },
@@ -27,6 +28,15 @@
     "comma-dangle": ["error", "never"],
     "jsx-quotes": [2, "prefer-single"],
     "quotes": ["error", "double"],
-    "object-curly-spacing": ["error", "always"]
+    "object-curly-spacing": ["error", "always"],
+    "require-jsdoc": ["error", {
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": false,
+        "ClassDeclaration": false,
+        "ArrowFunctionExpression": false,
+        "FunctionExpression": false
+      }
+    }]
   }
 }

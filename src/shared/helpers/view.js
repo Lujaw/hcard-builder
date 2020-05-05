@@ -11,9 +11,9 @@ const initialData = {
 
 const renderAppToString = ({ url, context }) =>
   ReactDOMServer.renderToString(
-    <StaticRouter location={url} context={context}>
-      <App />
-    </StaticRouter>
+      <StaticRouter location={url} context={context}>
+        <App />
+      </StaticRouter>
   );
 
 const renderTemplateMarkup = ({ url, context = initialData }) =>

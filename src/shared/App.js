@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import routes from './routes'
-import { Route, Link, Redirect, Switch } from 'react-router-dom'
-import NotFound from './NotFound'
+import React, { Component } from "react";
+import routes from "./routes";
+import { Route, Switch } from "react-router-dom";
+import NotFound from "./NotFound";
 
 class App extends Component {
   render() {
@@ -16,8 +16,8 @@ class App extends Component {
           <Route render={(props) => <NotFound {...props} />} />
         </Switch>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
