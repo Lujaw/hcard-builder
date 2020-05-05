@@ -29,7 +29,7 @@ const serverConfig = {
   },
   externals: [nodeExternals()],
   entry: {
-    "index.js": path.resolve(__dirname, "src/server.js")
+    "index.js": path.resolve(__dirname, "src/server/index.js")
   },
   module: {
     rules: [js, json]
@@ -40,7 +40,7 @@ const serverConfig = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: "src/models" }
+      { from: "src/server/models" }
     ])
   ],
   watchOptions: {
