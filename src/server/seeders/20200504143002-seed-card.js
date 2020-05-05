@@ -23,7 +23,7 @@ module.exports = {
       state: "NSW",
       postcode: "2009",
       country: "Australia",
-      avatar: "/public/img/Avatar.png",
+      avatar: "/static/img/Avatar.png",
       createdAt: new Date().toDateString(),
       updatedAt: new Date().toDateString()
     }], {});

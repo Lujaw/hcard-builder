@@ -1,38 +1,54 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const view = require("./helpers/view");
+const { renderToString } = require("react-dom/server");
+const { StaticRouter, matchPath } = require("react-router-dom");
+
+
+
+const routes = require("../shared/routes").default;
+const view = require("../shared/helpers/view");
 const db = require("./models");
 
 const app = express();
 
+// app.use(cors);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/static", express.static("dist/public"));
 
 
-app.get("/", (req, res) => {
-  const views = view.renderCardTemplate();
-  res.send(views);
-});
+app.get("/card*", (req, res, next) => {
+  const activeRoute = routes.find((route) => matchPath(req.url, route)) || {}
 
-app.get("/cards", (req, res) => {
+  const promise = activeRoute.fetchInitialData
+    ? activeRoute.fetchInitialData(req.path)
+    : Promise.resolve();
+
+  promise.then((data) => {
+    const context = { ...data };
+    const markup = view.renderTemplateMarkup({ url: req.url, context });
+
+    res.send(markup);
+  }).catch(next)
+})
+
+
+app.get("/api/cards", (req, res) => {
   return db.Card.findAll()
-    .then((cards) => res.send(cards))
+    .then((cards) => res.json(cards))
     .catch((err) => {
       console.log("There was an error querying", JSON.stringify(err));
       return res.send(err);
     });
 });
 
-app.get("/card/:id", (req, res) => {
+app.get("/api/card/:id", (req, res) => {
   const id = parseInt(req.params.id);
   return db.Card.findByPk(id)
     .then(({ dataValues }) => {
-      const views = view.renderCardTemplate({ url: req.url, context: {}, data: dataValues });
-      res.send(views);
-    })
-    .catch((err) => {
+      res.json(dataValues);
+    }).catch((err) => {
       console.log("***Error deleting contact", JSON.stringify(err));
       res.status(400).send(err);
     });

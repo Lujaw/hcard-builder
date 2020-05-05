@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const nodeExternals = require("webpack-node-externals");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
@@ -41,7 +42,11 @@ const serverConfig = {
   plugins: [
     new CopyWebpackPlugin([
       { from: "src/server/models" }
-    ])
+    ]),
+    new webpack.DefinePlugin({
+      __isBrowser__: "false"
+    })
+
   ],
   watchOptions: {
     ignored: ["node_modules/**"]
@@ -64,7 +69,10 @@ const clientConfig = {
   plugins: [
     new CopyWebpackPlugin([
       { from: "src/client/assets" }
-    ])
+    ]),
+    new webpack.DefinePlugin({
+      __isBrowser__: "true"
+    })
   ]
 };
 
