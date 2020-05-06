@@ -1,17 +1,24 @@
 import Hcard from "./Hcard";
-import { fetchCard } from "./api";
+import HcardList from "./HcardList";
+import { fetchCardById, fetchCards } from "./api";
 
 const routes = [
-  // {
-  //   path: '/',
-  //   exact: true,
-  //   component: Home,
-  // },
   {
     path: "/card/:id",
     component: Hcard,
-    fetchInitialData: (path = "") => fetchCard(path.split("/").pop())
+    fetchInitialData: (path = "") => fetchCardById(path.split("/").pop())
+  },
+  {
+    path: "/cards",
+    component: HcardList,
+    fetchInitialData: () => fetchCards()
+  },
+  {
+    path: ["/card", "/card/new"],
+    component: Hcard,
+    fetchInitialData: () => Promise.resolve({})
   }
+
 ];
 
 export default routes;

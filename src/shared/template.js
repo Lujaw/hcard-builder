@@ -10,6 +10,7 @@ export default (body, data) => {
         <script>window.__HCARD_STATE__ = ${serialize(data)}</script>
         <title>Live hCard Preview</title>
         <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/static/css/react-bootstrap-table.min.css" rel="stylesheet" />
         <link href="/static/css/main.css" rel="stylesheet" />
       </head>
       

@@ -14,7 +14,6 @@ const js = {
     }
   }
 };
-
 const json = {
   test: /\.json$/,
   loader: "json-loader",
@@ -68,7 +67,7 @@ const clientConfig = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: "src/client/assets" }
+      { from: "src/assets" }
     ]),
     new webpack.DefinePlugin({
       __isBrowser__: "true"

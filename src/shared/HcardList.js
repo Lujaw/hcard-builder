@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 
-global.React = React;
-const HcardComponent = require("../shared/hCard.min.js").default;
-
-
-class Hcard extends Component {
+class HcardList extends Component {
   constructor(props) {
     super(props);
 
@@ -16,8 +12,6 @@ class Hcard extends Component {
     } else {
       cardData = this.props.staticContext;
     }
-    console.log('HcardList#27->>>', Array.isArray(cardData), cardData);
-
     this.state = {
       cardData,
       loading: cardData ? false : true
@@ -42,29 +36,31 @@ class Hcard extends Component {
     }));
 
     this.props.fetchInitialData(card)
-      .then((cardData) => this.setState(() => ({
-        cardData,
-        loading: false
-      })));
+      .then((cardData) => {
+        this.setState(() => ({
+          cardData,
+          loading: false
+        }))
+      });
   }
+
   render() {
     const { loading, cardData } = this.state;
 
     if (loading === true) {
-      return <p>LOADING</p>;
+      return (<p>LOADING</p>);
     }
 
     return (
-      <HcardComponent {...cardData} />
-    );
-  }
+      <BootstrapTable data={cardData} options={{ noDataText: 'Please create a hCard' }} striped hover condensed >
+        <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Id</TableHeaderColumn>
+        <TableHeaderColumn dataField="givenName" dataSort={true}>Given Name</TableHeaderColumn>
+        <TableHeaderColumn dataField="surname" dataSort={true}>Surname</TableHeaderColumn>
+        <TableHeaderColumn dataField="email" dataSort={true} >Email</TableHeaderColumn>
+        <TableHeaderColumn dataField="phone" >Phone</TableHeaderColumn>
+      </BootstrapTable >);
+  };
+
 }
 
-
-Hcard.propTypes = {
-  match: PropTypes.object,
-  staticContext: PropTypes.object,
-  fetchInitialData: PropTypes.func
-};
-
-export default Hcard;
+export default HcardList;

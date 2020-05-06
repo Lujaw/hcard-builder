@@ -23,8 +23,9 @@ app.get("/card*", (req, res, next) => {
     Promise.resolve();
 
   promise.then((data) => {
-    const context = { ...data };
-    const markup = view.renderTemplateMarkup({ url: req.url, context });
+    const context = data;
+    const markup = view.renderTemplateMarkup(req.url, context);
+
 
     res.send(markup);
   }).catch(next);
@@ -33,22 +34,22 @@ app.get("/card*", (req, res, next) => {
 
 app.get("/api/cards", (req, res) => {
   return db.Card.findAll()
-      .then((cards) => res.json(cards))
-      .catch((err) => {
-        console.log("There was an error querying", JSON.stringify(err));
-        return res.send(err);
-      });
+    .then((cards) => res.json(cards))
+    .catch((err) => {
+      console.log("There was an error querying", JSON.stringify(err));
+      return res.send(err);
+    });
 });
 
 app.get("/api/card/:id", (req, res) => {
   const id = parseInt(req.params.id);
   return db.Card.findByPk(id)
-      .then(({ dataValues }) => {
-        res.json(dataValues);
-      }).catch((err) => {
-        console.log("***Error deleting contact", JSON.stringify(err));
-        res.status(400).send(err);
-      });
+    .then(({ dataValues }) => {
+      res.json(dataValues);
+    }).catch((err) => {
+      console.log("***Error deleting contact", JSON.stringify(err));
+      res.status(400).send(err);
+    });
 });
 
 app.post("/submit", (req, res) => {
@@ -57,17 +58,17 @@ app.post("/submit", (req, res) => {
 
   if (id == "") {
     db.Card.create(values)
-        .then((card) => res.json(card));
+      .then((card) => res.redirect(`/cards`));
   } else {
     db.Card.update(values, { where: { id } })
-        .then((card) => res.json(card));
+      .then((card) => res.redirect(`/cards`));
   }
 });
 
 app.post("/update", (req, res) => {
   const { id, ...values } = req.body;
   db.Card.update(values, { where: { id } })
-      .then((card) => res.json(card));
+    .then((card) => res.json(card));
 });
 
 app.listen(3000, () => {
