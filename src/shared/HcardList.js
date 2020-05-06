@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
+import { BootstrapTable as Table, TableHeaderColumn as Header } from "react-bootstrap-table";
+import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
+
 
 class HcardList extends Component {
   constructor(props) {
@@ -22,12 +25,7 @@ class HcardList extends Component {
 
   componentDidMount() {
     if (!this.state.cardData) {
-      this.fetchData(this.props.match.params.id);
-    }
-  }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.fetchData(this.props.match.params.id);
+      this.fetchData();
     }
   }
   fetchData(card) {
@@ -35,13 +33,17 @@ class HcardList extends Component {
       loading: true
     }));
 
-    this.props.fetchInitialData(card)
+    this.props.fetchInitialData()
         .then((cardData) => {
           this.setState(() => ({
             cardData,
             loading: false
           }));
         });
+  }
+
+  addEditLink(cell) {
+    return (<NavLink to={`/card/${cell}`} > Edit</NavLink >);
   }
 
   render() {
@@ -52,14 +54,20 @@ class HcardList extends Component {
     }
 
     return (
-      <BootstrapTable data={cardData} options={{ noDataText: "Please create a hCard" }} striped hover condensed >
-        <TableHeaderColumn dataField='id' isKey={true} dataAlign='center' dataSort={true}>Id</TableHeaderColumn>
-        <TableHeaderColumn dataField='givenName' dataSort={true}>Given Name</TableHeaderColumn>
-        <TableHeaderColumn dataField='surname' dataSort={true}>Surname</TableHeaderColumn>
-        <TableHeaderColumn dataField='email' dataSort={true} >Email</TableHeaderColumn>
-        <TableHeaderColumn dataField='phone' >Phone</TableHeaderColumn>
-      </BootstrapTable >);
+      <Table data={cardData} options={{ noDataText: "Please create a hCard" }} striped hover>
+        <Header dataField='id' isKey={true} dataAlign='center' dataSort={true}>Id</Header>
+        <Header dataField='givenName' dataSort={true}>Given Name</Header>
+        <Header dataField='surname' dataSort={true}>Surname</Header>
+        <Header dataField='email' dataSort={true}>Email</Header>
+        <Header dataField='phone'>Phone</Header>
+        <Header dataField='id' dataFormat={this.addEditLink}></Header>
+      </Table >);
   };
 }
+
+HcardList.propTypes = {
+  staticContext: PropTypes.object,
+  fetchInitialData: PropTypes.func
+};
 
 export default HcardList;

@@ -16,7 +16,6 @@ class Hcard extends Component {
     } else {
       cardData = this.props.staticContext;
     }
-    console.log("HcardList#27->>>", Array.isArray(cardData), cardData);
 
     this.state = {
       cardData,
@@ -31,11 +30,7 @@ class Hcard extends Component {
       this.fetchData(this.props.match.params.id);
     }
   }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.fetchData(this.props.match.params.id);
-    }
-  }
+
   fetchData(card) {
     this.setState(() => ({
       loading: true

@@ -20,7 +20,6 @@ const fetchCards = () => {
       .then((data) => {
         return data.json();
       })
-      .then((data) => console.log({ fetched: data }) || data)
       .catch((error) => {
         console.warn(error);
         return null;

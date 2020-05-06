@@ -29,6 +29,9 @@
     "jsx-quotes": [2, "prefer-single"],
     "quotes": ["error", "double"],
     "object-curly-spacing": ["error", "always"],
+    "max-len": ["error", {
+      "code": 95
+    }],
     "require-jsdoc": ["error", {
       "require": {
         "FunctionDeclaration": true,
