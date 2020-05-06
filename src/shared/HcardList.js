@@ -36,12 +36,12 @@ class HcardList extends Component {
     }));
 
     this.props.fetchInitialData(card)
-      .then((cardData) => {
-        this.setState(() => ({
-          cardData,
-          loading: false
-        }))
-      });
+        .then((cardData) => {
+          this.setState(() => ({
+            cardData,
+            loading: false
+          }));
+        });
   }
 
   render() {
@@ -52,15 +52,14 @@ class HcardList extends Component {
     }
 
     return (
-      <BootstrapTable data={cardData} options={{ noDataText: 'Please create a hCard' }} striped hover condensed >
-        <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Id</TableHeaderColumn>
-        <TableHeaderColumn dataField="givenName" dataSort={true}>Given Name</TableHeaderColumn>
-        <TableHeaderColumn dataField="surname" dataSort={true}>Surname</TableHeaderColumn>
-        <TableHeaderColumn dataField="email" dataSort={true} >Email</TableHeaderColumn>
-        <TableHeaderColumn dataField="phone" >Phone</TableHeaderColumn>
+      <BootstrapTable data={cardData} options={{ noDataText: "Please create a hCard" }} striped hover condensed >
+        <TableHeaderColumn dataField='id' isKey={true} dataAlign='center' dataSort={true}>Id</TableHeaderColumn>
+        <TableHeaderColumn dataField='givenName' dataSort={true}>Given Name</TableHeaderColumn>
+        <TableHeaderColumn dataField='surname' dataSort={true}>Surname</TableHeaderColumn>
+        <TableHeaderColumn dataField='email' dataSort={true} >Email</TableHeaderColumn>
+        <TableHeaderColumn dataField='phone' >Phone</TableHeaderColumn>
       </BootstrapTable >);
   };
-
 }
 
 export default HcardList;

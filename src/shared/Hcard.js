@@ -16,7 +16,7 @@ class Hcard extends Component {
     } else {
       cardData = this.props.staticContext;
     }
-    console.log('HcardList#27->>>', Array.isArray(cardData), cardData);
+    console.log("HcardList#27->>>", Array.isArray(cardData), cardData);
 
     this.state = {
       cardData,
@@ -42,10 +42,10 @@ class Hcard extends Component {
     }));
 
     this.props.fetchInitialData(card)
-      .then((cardData) => this.setState(() => ({
-        cardData,
-        loading: false
-      })));
+        .then((cardData) => this.setState(() => ({
+          cardData,
+          loading: false
+        })));
   }
   render() {
     const { loading, cardData } = this.state;
