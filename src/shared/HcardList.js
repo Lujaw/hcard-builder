@@ -66,7 +66,7 @@ class HcardList extends Component {
 }
 
 HcardList.propTypes = {
-  staticContext: PropTypes.object,
+  staticContext: PropTypes.array,
   fetchInitialData: PropTypes.func
 };
 

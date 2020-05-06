@@ -18,4 +18,4 @@ const handleSsr = (req, res, next) => {
 
 export {
   handleSsr
-}
+};

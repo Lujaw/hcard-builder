@@ -1,8 +1,8 @@
-const React = require("react");
-const ReactDOMServer = require("react-dom/server");
-const StaticRouter = require("react-router-dom").StaticRouter;
-const template = require("../template").default;
-const App = require("../App").default;
+import React from "react";
+import { renderToString } from "react-dom/server";
+import { StaticRouter } from "react-router-dom";
+import template from "../template";
+import App from "../App";
 
 const initialData = {
   avatar: "/static/img/Avatar.png"
@@ -10,7 +10,7 @@ const initialData = {
 
 
 const renderAppToString = (url, context) =>
-  ReactDOMServer.renderToString(
+  renderToString(
       <StaticRouter location={url} context={context}>
         <App />
       </StaticRouter>
@@ -19,7 +19,7 @@ const renderAppToString = (url, context) =>
 const renderTemplateMarkup = (url, context = initialData) =>
   template(renderAppToString(url, context), context);
 
-module.exports = {
+export default {
   renderAppToString,
   renderTemplateMarkup
 };

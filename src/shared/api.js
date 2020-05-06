@@ -1,4 +1,4 @@
-const fetch = require("isomorphic-fetch");
+import fetch from "isomorphic-fetch";
 
 const apiUrl = "http://localhost:3000/api";
 
@@ -26,7 +26,7 @@ const fetchCards = () => {
       });
 };
 
-module.exports = {
+export {
   fetchCardById,
   fetchCards
 };

@@ -1,10 +1,10 @@
-import express from "express";
+import { Router } from "express";
 import { handleSubmit } from "./handlers/submit";
 import { handleUpdate } from "./handlers/update";
 import { getCards, getCardById } from "./handlers/cards";
 import { handleSsr } from "./handlers/ssr";
 
-const router = express.Router();
+const router = Router();
 
 router.post("/submit", handleSubmit);
 router.post("/update", handleUpdate);

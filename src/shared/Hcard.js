@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 
 global.React = React;
 const HcardComponent = require("../shared/hCard.min.js").default;
-
-
 class Hcard extends Component {
   constructor(props) {
     super(props);

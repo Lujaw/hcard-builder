@@ -39,9 +39,9 @@ const serverConfig = {
     filename: "[name]"
   },
   plugins: [
-    new CopyWebpackPlugin([
-      { from: "src/server/models" }
-    ]),
+    // new CopyWebpackPlugin([
+    //   { from: "src/server/models" }
+    // ]),
     new webpack.DefinePlugin({
       __isBrowser__: "false"
     })

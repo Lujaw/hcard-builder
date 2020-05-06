@@ -1,4 +1,4 @@
-const serialize = require("serialize-javascript");
+import serialize from "serialize-javascript";
 export default (body, data) => {
   return `
     <!DOCTYPE html>
