@@ -1,23 +1,17 @@
 import db from "../../models";
 const { Card } = db;
 
-const getCards = (req, res) => {
+const getCards = (req, res, next) => {
   return Card.findAll()
     .then((cards) => res.json(cards))
-    .catch((err) => {
-      console.log("There was an error querying", JSON.stringify(err));
-      return res.send(err);
-    });
+    .catch(next);
 };
 
-const getCardById = (req, res) => {
+const getCardById = (req, res, next) => {
   const id = parseInt(req.params.id);
   return Card.findOne({ where: { id } })
     .then((cards) => res.json(cards))
-    .catch((err) => {
-      console.log("There was an error querying", JSON.stringify(err));
-      res.status(400).send(err);
-    });
+    .catch(next);
 };
 
 export {

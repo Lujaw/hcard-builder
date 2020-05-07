@@ -1,6 +1,5 @@
 import Sequelize from "sequelize";
 const env = process.env.NODE_ENV || "development";
-console.log('index#3->>>', { env });
 const config = require("../config/database.json")[env];
 const db = {};
 
