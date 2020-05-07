@@ -5,11 +5,8 @@
   "main": "server/index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "concurrently": "^5.2.0",
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "isomorphic-fetch": "^2.2.1",
-    "lowdb": "^1.0.0",
     "nodemon": "^2.0.3",
     "prop-types": "^15.7.2",
     "react": "^15.5.4",
@@ -27,10 +24,8 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^5.1.1",
-    "css-loader": "^3.5.3",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-react": "^7.19.0",
     "json-loader": "^0.5.7",
     "sequelize-cli": "^5.5.1",
@@ -39,9 +34,13 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "dev": "webpack && npx concurrently \"webpack --watch\" \"nodemon dist \""
+    "build:dev": "webpack --mode=development --progress --colors",
+    "build:dist": "webpack --mode=production -p --progress --colors",
+    "serve": "nodemon dist",
+    "prestart": "npm run build:dev",
+    "start": "npm run serve",
+    "start:dist": "npm run build:dist && npm run serve"
   },
   "keywords": [
     "hcard",

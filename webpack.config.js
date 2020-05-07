@@ -21,7 +21,6 @@ const json = {
 };
 
 const serverConfig = {
-  mode: "development",
   target: "node",
   node: {
     __dirname: false,
@@ -39,13 +38,9 @@ const serverConfig = {
     filename: "[name]"
   },
   plugins: [
-    // new CopyWebpackPlugin([
-    //   { from: "src/server/models" }
-    // ]),
     new webpack.DefinePlugin({
-      __isBrowser__: "false"
+      "__isBrowser__": false
     })
-
   ],
   watchOptions: {
     ignored: ["node_modules/**"]
@@ -53,7 +48,6 @@ const serverConfig = {
 };
 
 const clientConfig = {
-  mode: "development",
   target: "web",
   entry: {
     "bundle.js": path.resolve(__dirname, "src/client/index.js")
@@ -70,7 +64,7 @@ const clientConfig = {
       { from: "src/assets" }
     ]),
     new webpack.DefinePlugin({
-      __isBrowser__: "true"
+      "__isBrowser__": true
     })
   ]
 };
