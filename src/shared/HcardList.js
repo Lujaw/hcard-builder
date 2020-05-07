@@ -28,7 +28,7 @@ class HcardList extends Component {
       this.fetchData();
     }
   }
-  fetchData(card) {
+  fetchData() {
     this.setState(() => ({
       loading: true
     }));
