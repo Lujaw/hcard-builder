@@ -4,13 +4,16 @@ const mockResponse = () => {
   res.json = jest.fn().mockReturnValue(res);
   res.redirect = jest.fn().mockReturnValue(res);
   res.url = jest.fn().mockReturnValue(res);
+  res.send = jest.fn().mockReturnValue(res);
   return res;
 };
 
-const mockRequest = ({ body = {}, params = {} }) => {
+const mockRequest = ({ body, params, url, path }) => {
   return {
-    body,
-    params
+    ...(body && { body }),
+    ...(params && { params }),
+    ...(url && { url }),
+    ...(path && { path })
   };
 };
 

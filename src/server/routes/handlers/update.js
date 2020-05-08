@@ -13,6 +13,4 @@ const handleUpdate = (req, res, next) => {
 
 };
 
-export {
-  handleUpdate
-};
+export default handleUpdate;

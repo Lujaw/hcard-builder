@@ -3,12 +3,7 @@ import handleSsr from "../ssr";
 import { mockRequest, mockResponse, sampleCard } from "../../../utils/testing";
 import view from "../../../../shared/helpers/view";
 
-console.log('ssr.test#6->>>', { view });
-
 const httpUrl = "http://localhost:3000";
-
-
-// beforeEach(())
 
 describe("SSR handler", () => {
   describe("for single card route", () => {
@@ -24,7 +19,7 @@ describe("SSR handler", () => {
       });
 
       const res = mockResponse();
-      const expectedView = view.renderTemplateMarkup(url, sampleCard)
+      const expectedView = view.renderTemplateMarkup(url, sampleCard);
       await handleSsr(req, res);
       expect(res.send).toHaveBeenCalledWith(expectedView);
     });
