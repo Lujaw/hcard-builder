@@ -6,11 +6,11 @@ const handleSubmit = (req, res, next) => {
 
   // if there is no id in the request, we create a new card, otherwise update the card
   if (Number(id)) {
-    Card.update(values, { where: { id } })
+    return Card.update(values, { where: { id } })
       .then(() => res.redirect("/cards"))
       .catch(next);
   } else {
-    Card.create(values)
+    return Card.create(values)
       .then(() => res.redirect("/cards"))
       .catch(next);
   }

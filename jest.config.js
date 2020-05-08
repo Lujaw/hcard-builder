@@ -10,6 +10,9 @@ module.exports = {
     "/__snapshots__/.*",
     "/*.mock.js"
   ],
+  transform: {
+    "^.+\\.jsx?$": "babel-jest"
+  },
   coverageThreshold: {
     global: {
       branches: 50,
@@ -20,6 +23,7 @@ module.exports = {
   },
   moduleFileExtensions: [
     "js",
+    "jsx",
     "json"
   ]
 };

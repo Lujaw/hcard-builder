@@ -45,7 +45,7 @@
     "build:dist": "webpack --mode=production -p --progress --colors",
     "serve": "nodemon dist",
     "prestart": "npm run build:dev",
-    "start": "npm run build:dev && npx concurrently \"webpack --watch\" \"nodemon dist \"",
+    "start": "npx concurrently \"webpack --mode=development --watch\" \"nodemon dist \"",
     "start:dist": "npm run build:dist && npm run serve"
   },
   "keywords": [
