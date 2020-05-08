@@ -1,5 +1,5 @@
-const { handleSubmit } = require("../submit");
-const { mockRequest, mockResponse } = require("../../../utils/testing");
+import handleSubmit from "../submit";
+import { mockRequest, mockResponse } from "../../../utils/testing";
 
 jest.mock("../../../models");
 
@@ -12,6 +12,7 @@ describe("Submit handler", () => {
       expect(res.redirect).toHaveBeenCalledWith("/cards");
     });
   });
+  
   describe("when valid Id is present", () => {
     it("should update the card with given id", async () => {
       const req = mockRequest({ body: { id: 1 } });

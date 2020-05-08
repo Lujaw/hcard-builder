@@ -1,5 +1,5 @@
 module.exports = {
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
   collectCoverage: true,
   coverageReporters: ["json", "html"],
   roots: [
@@ -10,6 +10,9 @@ module.exports = {
     "/__snapshots__/.*",
     "/*.mock.js"
   ],
+  "globals": {
+    "__isBrowser__": true
+  },
   transform: {
     "^.+\\.jsx?$": "babel-jest"
   },

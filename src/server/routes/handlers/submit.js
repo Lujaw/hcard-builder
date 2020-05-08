@@ -16,6 +16,4 @@ const handleSubmit = (req, res, next) => {
   }
 };
 
-export {
-  handleSubmit
-};
+export default handleSubmit;

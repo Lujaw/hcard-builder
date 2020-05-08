@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { handleSubmit } from "./handlers/submit";
-import { handleUpdate } from "./handlers/update";
+import handleSubmit from "./handlers/submit";
+import handleUpdate from "./handlers/update";
+import handleSsr from "./handlers/ssr";
 import { getCards, getCardById } from "./handlers/cards";
-import { handleSsr } from "./handlers/ssr";
 
 const router = Router();
 

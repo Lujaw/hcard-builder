@@ -4,18 +4,15 @@ import view from "../../../shared/helpers/view";
 
 const handleSsr = (req, res, next) => {
   const activeRoute = routes.find((route) => matchPath(req.url, route)) || {};
-
   const promise = activeRoute.fetchInitialData ?
     activeRoute.fetchInitialData(req.path) :
     Promise.resolve();
 
-  promise.then((data) => {
+  return promise.then((data) => {
     const context = data;
     const markup = view.renderTemplateMarkup(req.url, context);
-    res.send(markup);
+    return res.send(markup);
   }).catch(next);
 };
 
-export {
-  handleSsr
-};
+export default handleSsr;

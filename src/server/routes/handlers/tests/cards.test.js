@@ -1,5 +1,5 @@
-const { getCards, getCardById } = require("../cards");
-const { mockRequest, mockResponse, sampleCard } = require("../../../utils/testing");
+import { getCards, getCardById } from "../cards";
+import { mockRequest, mockResponse, sampleCard } from "../../../utils/testing";
 
 jest.mock("../../../models");
 

@@ -1,5 +1,5 @@
-const { handleUpdate } = require("../update");
-const { mockRequest, mockResponse } = require("../../../utils/testing");
+import handleUpdate from "../update";
+import { mockRequest, mockResponse }  from "../../../utils/testing";
 
 jest.mock("../../../models");
 
