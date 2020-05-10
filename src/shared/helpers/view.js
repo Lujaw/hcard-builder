@@ -9,12 +9,13 @@ const initialData = {
 };
 
 
-const renderAppToString = (url, context) =>
-  renderToString(
-      <StaticRouter location={url} context={context}>
-        <App />
-      </StaticRouter>
+const renderAppToString = (url, context) => {
+  return renderToString(
+    <StaticRouter location={url} context={{ ...context }}>
+      <App />
+    </StaticRouter>
   );
+}
 
 const renderTemplateMarkup = (url, context = initialData) =>
   template(renderAppToString(url, context), context);

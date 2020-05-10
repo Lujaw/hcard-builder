@@ -13,7 +13,9 @@ class HcardList extends Component {
       cardData = window.__HCARD_DATA__;
       delete window.__HCARD_DATA__;
     } else {
-      cardData = this.props.staticContext;
+      // converting staticContextArray back to an array
+      const staticContextArray = Object.values(this.props.staticContext);
+      cardData = staticContextArray;
     }
     this.state = {
       cardData,
@@ -34,12 +36,12 @@ class HcardList extends Component {
     }));
 
     this.props.fetchInitialData()
-        .then((cardData) => {
-          this.setState(() => ({
-            cardData,
-            loading: false
-          }));
-        });
+      .then((cardData) => {
+        this.setState(() => ({
+          cardData,
+          loading: false
+        }));
+      });
   }
 
   addEditLink(cell) {
@@ -66,7 +68,7 @@ class HcardList extends Component {
 }
 
 HcardList.propTypes = {
-  staticContext: PropTypes.array,
+  staticContext: PropTypes.object,
   fetchInitialData: PropTypes.func
 };
 
