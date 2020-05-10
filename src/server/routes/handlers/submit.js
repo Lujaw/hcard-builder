@@ -8,17 +8,22 @@ const handleSubmit = async (req, res, next) => {
     // if there is no id in the request, we create a new card, otherwise update the card
     if (Number(id)) {
       card = await Card.update(values, { where: { id } });
+      return res.redirect(`/card/${id}`);
     } else {
       card = await Card.create(values);
-    }
-    // redirecting the table of cards when the operation is successful
-    if (card) {
-      return res.redirect("/cards");
-    } else {
-      throw new Error("Could not submit the card");
+      const { id: cardId } = card.dataValues;
+      // redirecting the table of cards when the creation is successful
+      return res.redirect(`/card/${cardId}`);
     }
   } catch (err) {
-    next(err);
+    if (err.name === "SequelizeValidationError") {
+      return res.status(422).json({
+        message: "Validation failed",
+        details: err.errors.map(({ message }) => message)
+      });
+    } else {
+      next(err);
+    }
   }
 };
 

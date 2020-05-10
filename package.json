@@ -48,7 +48,7 @@
     "serve": "nodemon dist",
     "prestart": "npm run build:dev",
     "start": "npx concurrently \"webpack --mode=development --watch\" \"nodemon dist \"",
-    "start:dist": "npm run build:dist && npm run serve"
+    "start:dist": "export PORT=8080 && npm run build:dist && npm run serve"
   },
   "keywords": [
     "hcard",

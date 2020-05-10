@@ -15,7 +15,13 @@ const handleUpdate = async (req, res, next) => {
       return res.status(204).json();
     }
   } catch (err) {
-    next(err);
+    if (err.name === "SequelizeValidationError") {
+      res.status(422).json({
+        message: "Validation failed",
+        details: err.errors.map(({ message }) => message)
+      });
+      next(err);
+    }
   }
 };
 

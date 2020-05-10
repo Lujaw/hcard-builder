@@ -1,22 +1,22 @@
 module.exports = {
-  testEnvironment: "jsdom",
-  collectCoverage: true,
-  coverageReporters: ["json", "html"],
-  roots: [
+  "testEnvironment": "jsdom",
+  "collectCoverage": true,
+  "coverageReporters": ["json", "html"],
+  "roots": [
     "<rootDir>/src/server/"
   ],
-  testMatch: ["**/tests/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-  modulePathIgnorePatterns: [
+  "testMatch": ["**/tests/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+  "modulePathIgnorePatterns": [
     "/__snapshots__/.*",
     "/*.mock.js"
   ],
   "globals": {
     "__isBrowser__": true
   },
-  transform: {
+  "transform": {
     "^.+\\.jsx?$": "babel-jest"
   },
-  coverageThreshold: {
+  "coverageThreshold": {
     global: {
       branches: 50,
       functions: 50,
@@ -24,7 +24,7 @@ module.exports = {
       statements: 60
     }
   },
-  moduleFileExtensions: [
+  "moduleFileExtensions": [
     "js",
     "jsx",
     "json"
