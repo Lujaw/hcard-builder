@@ -30,18 +30,16 @@ class HcardList extends Component {
       this.fetchData();
     }
   }
-  fetchData() {
+  async fetchData() {
     this.setState(() => ({
       loading: true
     }));
 
-    this.props.fetchInitialData()
-      .then((cardData) => {
-        this.setState(() => ({
-          cardData,
-          loading: false
-        }));
-      });
+    const cardData = await this.props.fetchInitialData();
+    this.setState(() => ({
+      cardData,
+      loading: false
+    }));
   }
 
   addEditLink(cell) {

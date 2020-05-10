@@ -41,8 +41,8 @@ describe("Submit handler", () => {
 
       // queing validation error to test the validation failure case
       Card.$queryInterface.$queueFailure(new SequelizeValidationError(
-        "Validation failed",
-        [{ message: "surname validation failed" }]
+          "Validation failed",
+          [{ message: "surname validation failed" }]
       ));
 
       await handleSubmit(req, res, next);
@@ -61,7 +61,7 @@ describe("Submit handler", () => {
 
       // queing validation error to test the validation failure case
       Card.$queryInterface.$queueFailure(new Error(
-        "Could not submit the card."
+          "Could not submit the card."
       ));
 
       await handleSubmit(req, res, next);

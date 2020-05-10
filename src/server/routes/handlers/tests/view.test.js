@@ -22,8 +22,8 @@ describe("SSR handler", () => {
     it("should send the hcard component with single card", async () => {
       const url = "/card/1";
       nock(httpUrl)
-        .get(`/api${url}`)
-        .reply(200, sampleCard);
+          .get(`/api${url}`)
+          .reply(200, sampleCard);
 
       const req = mockRequest({
         url: url,
@@ -42,8 +42,8 @@ describe("SSR handler", () => {
     it("should send the HcardList component with all cards", async () => {
       const url = "/cards";
       nock(httpUrl)
-        .get(`/api${url}`)
-        .reply(200, [sampleCard]);
+          .get(`/api${url}`)
+          .reply(200, [sampleCard]);
 
       const req = mockRequest({
         url: url,
