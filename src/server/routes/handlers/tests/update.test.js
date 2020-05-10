@@ -1,5 +1,8 @@
 import handleUpdate from "../update";
-import { mockRequest, mockResponse, mockNext, SequelizeValidationError } from "../../../utils/testing";
+import {
+  mockRequest, mockResponse,
+  mockNext, SequelizeValidationError
+} from "../../../utils/testing";
 import db from "../../../models";
 const { Card } = db;
 

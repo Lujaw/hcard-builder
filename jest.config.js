@@ -5,6 +5,9 @@ module.exports = {
   "roots": [
     "<rootDir>/src/server/"
   ],
+  "testPathIgnorePatterns": [
+    "<rootDir>/src/client/"
+  ],
   "testMatch": ["**/tests/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
   "modulePathIgnorePatterns": [
     "/__snapshots__/.*",
@@ -18,10 +21,10 @@ module.exports = {
   },
   "coverageThreshold": {
     global: {
-      branches: 50,
-      functions: 50,
-      lines: 60,
-      statements: 60
+      branches: 85,
+      functions: 85,
+      lines: 85,
+      statements: 85
     }
   },
   "moduleFileExtensions": [

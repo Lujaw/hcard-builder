@@ -8,20 +8,18 @@ const handleUpdate = async (req, res, next) => {
       const card = await Card.update(values, { where: { id } });
       if (card) {
         return res.status(200).json(card);
-      } else {
-        throw new Error(`Could not update the card id- ${id}`);
       }
-    } else {
-      return res.status(204).json();
     }
+    throw new Error("Could not update the card.");
   } catch (err) {
+    // send 422 if there is any validation errors
     if (err.name === "SequelizeValidationError") {
       res.status(422).json({
         message: "Validation failed",
         details: err.errors.map(({ message }) => message)
       });
-      next(err);
     }
+    next(err);
   }
 };
 

@@ -1,7 +1,19 @@
 import nock from "nock";
 import handleViews from "../views";
-import { mockRequest, mockResponse, mockNext, sampleCard } from "../../../utils/testing";
+import {
+  mockRequest, mockResponse,
+  mockNext, sampleCard
+} from "../../../utils/testing";
+import db from "../../../models";
 import view from "../../../../shared/helpers/view";
+
+const { Card } = db;
+jest.mock("../../../models");
+
+beforeEach(() => {
+  Card.$queryInterface.$clearHandlers();
+  Card.$queryInterface.$clearQueue();
+});
 
 const httpUrl = "http://localhost:3000";
 
@@ -28,7 +40,6 @@ describe("SSR handler", () => {
 
   describe("for all cards route", () => {
     it("should send the HcardList component with all cards", async () => {
-
       const url = "/cards";
       nock(httpUrl)
         .get(`/api${url}`)
