@@ -19,9 +19,15 @@ const mockRequest = ({ body, params, url, path }) => {
 
 const mockNext = () => {
   return jest.fn();
+};
+
+class SequelizeValidationError extends Error {
+  constructor(message, errors) {
+    super(message);
+    this.name = "SequelizeValidationError";
+    this.errors = errors;
+  }
 }
-
-
 const sampleCard = {
   "givenName": "Sam",
   "surname": "Fairfax",
@@ -40,5 +46,6 @@ export {
   mockResponse,
   mockRequest,
   mockNext,
-  sampleCard
+  sampleCard,
+  SequelizeValidationError
 };
