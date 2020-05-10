@@ -1,11 +1,11 @@
 import handleUpdate from "../update";
-import { mockRequest, mockResponse }  from "../../../utils/testing";
+import { mockRequest, mockResponse, mockNext }  from "../../../utils/testing";
 
 jest.mock("../../../models");
 
 describe("Update handler", () => {
-  describe("when valid Id is absent", () => {
-    it("should create a new card if card id is not present", async () => {
+  describe("when valid Id is present", () => {
+    it("should update the card with the given Id", async () => {
       const req = mockRequest({
         body: {
           id: 1,
@@ -13,7 +13,8 @@ describe("Update handler", () => {
         }
       });
       const res = mockResponse();
-      await handleUpdate(req, res);
+      const next = mockNext();
+      await handleUpdate(req, res, next);
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith([1]);
     });
@@ -26,9 +27,10 @@ describe("Update handler", () => {
         }
       });
       const res = mockResponse();
-      await handleUpdate(req, res);
+      const next = mockNext();
+      await handleUpdate(req, res, next);
       expect(res.status).toHaveBeenCalledWith(204);
-      expect(res.json).toHaveBeenCalledWith([]);
+      expect(res.json).toHaveBeenCalledWith();
     });
   });
 });

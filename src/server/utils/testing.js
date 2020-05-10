@@ -17,6 +17,10 @@ const mockRequest = ({ body, params, url, path }) => {
   };
 };
 
+const mockNext = () => {
+  return jest.fn();
+}
+
 
 const sampleCard = {
   "givenName": "Sam",
@@ -35,5 +39,6 @@ const sampleCard = {
 export {
   mockResponse,
   mockRequest,
+  mockNext,
   sampleCard
 };
