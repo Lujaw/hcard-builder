@@ -2,9 +2,11 @@ import { matchPath } from "react-router-dom";
 import routes from "../../../shared/routes";
 import view from "../../../shared/helpers/view";
 
-const handleSsr = async (req, res, next) => {
+const handleViews = async (req, res, next) => {
   try {
+    console.log('views#7->>>', { url: req.url, path: req.path });
     const activeRoute = routes.find((route) => matchPath(req.url, route)) || {};
+    console.log('ssr#8->>>', { activeRoute });
     const promise = activeRoute.fetchInitialData ?
       activeRoute.fetchInitialData(req.path) :
       Promise.resolve();
@@ -17,4 +19,4 @@ const handleSsr = async (req, res, next) => {
   }
 };
 
-export default handleSsr;
+export default handleViews;

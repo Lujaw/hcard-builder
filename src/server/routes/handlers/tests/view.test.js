@@ -1,5 +1,5 @@
 import nock from "nock";
-import handleSsr from "../ssr";
+import handleViews from "../views";
 import { mockRequest, mockResponse, mockNext, sampleCard } from "../../../utils/testing";
 import view from "../../../../shared/helpers/view";
 
@@ -21,7 +21,7 @@ describe("SSR handler", () => {
       const res = mockResponse();
       const next = mockNext();
       const expectedView = view.renderTemplateMarkup(url, sampleCard);
-      await handleSsr(req, res, next);
+      await handleViews(req, res, next);
       expect(res.send).toHaveBeenCalledWith(expectedView);
     });
   });
@@ -42,7 +42,7 @@ describe("SSR handler", () => {
       const res = mockResponse();
       const next = mockNext();
       const expectedView = view.renderTemplateMarkup(url, [sampleCard]);
-      await handleSsr(req, res, next);
+      await handleViews(req, res, next);
       expect(res.send).toHaveBeenCalledWith(expectedView);
     });
   });
