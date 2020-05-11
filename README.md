@@ -16,6 +16,7 @@
 
 - node.js 12.x or above
 - react v15
+- have port 3000 available
 - docker (optional)
 
 ## Steps to run the App manually
@@ -45,9 +46,8 @@ Open the url http://localhost:3000
 ## Challenges
 
 - Due to the main.js being written using React v15, had following limitations
-  - Warning: Accessing PropTypes via the main React package is deprecated
-  - Could not use the hydrate method, and had to use the render method instead, hence
-    the following warning
+  - Warning: Accessing PropTypes via the main React package is deprecated is shown in console
+  - Could not use the hydrate method, and had to use the render method instead and also due to use of react router the following warning is shown in the console
     - Warning: React attempted to reuse markup in a container but the checksum was invalid.
 - Even tried migrating the code to version 16 using "React-codemod/React-PropTypes-to-prop-types"
   but since the code was minified, and it ran into some issues, abandoned the idea
