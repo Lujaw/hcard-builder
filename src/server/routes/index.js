@@ -11,7 +11,7 @@ router.post("/update", handleUpdate);
 router.get("/api/cards", getCards);
 router.get("/api/card/:id", getCardById);
 
-// send all other routes to the view handler
+// sending all other routes to the view handler
 router.get("*", handleViews);
 
 export default router;

@@ -1,5 +1,6 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
+  // custom validation for the fields which allows alphanumeric and space or dash
   const isAlphaNumericWithSpaceOrDash = (fieldName) => ({
     args: /[\w\s\.-]+$/,
     msg: `Validation isAlphaNumericWithSpaceOrDash on ${fieldName} failed`

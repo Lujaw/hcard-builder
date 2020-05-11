@@ -1,6 +1,15 @@
 import db from "../../models";
 const { Card } = db;
 
+
+/**
+ * Update route handler function
+ * @module update
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next middleware function
+*/
+
 const handleUpdate = async (req, res, next) => {
   try {
     const { id, ...values } = req.body;

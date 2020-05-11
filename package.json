@@ -31,6 +31,7 @@
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.19.0",
+    "jsdoc": "^3.6.4",
     "json-loader": "^0.5.7",
     "nock": "^12.0.3",
     "sequelize-cli": "^5.5.1",
@@ -48,6 +49,7 @@
     "build:dev": "webpack --mode=development --progress --colors",
     "build:dist": "webpack --mode=production -p --progress --colors",
     "serve": "nodemon dist",
+    "docs": "npx jsdoc -r ./src/server",
     "prestart": "npm run build:dev",
     "start": "npx concurrently \"webpack --mode=development --watch\" \"npm run serve \"",
     "start:dist": "export PORT=3000 && npm run build:dist && npm run serve"

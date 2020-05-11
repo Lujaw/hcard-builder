@@ -1,6 +1,16 @@
 import db from "../../models";
 const { Card } = db;
 
+/** @module cards */
+
+/**
+ * Retrieve all the cards from the DB
+ * @function getCards
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next middleware function
+ * @return {Object[]} List of all the cards in DB
+ */
 const getCards = async (req, res, next) => {
   try {
     const cards = await Card.findAll();
@@ -13,6 +23,14 @@ const getCards = async (req, res, next) => {
   }
 };
 
+/**
+ * Retrieve a single card from the DB by using id
+ * @function getCardById
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next middleware function
+ * @return {Object} Single card json
+ */
 const getCardById = async (req, res, next) => {
   try {
     const id = parseInt(req.params.id);

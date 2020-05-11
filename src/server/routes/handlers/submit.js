@@ -1,6 +1,13 @@
 import db from "../../models";
 const { Card } = db;
 
+/**
+ * Submit route handler function
+ * @module submit
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next middleware function
+ */
 const handleSubmit = async (req, res, next) => {
   try {
     const { id, ...values } = req.body;
