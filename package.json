@@ -43,12 +43,14 @@
     "lint": "eslint .",
     "test": "jest --config=jest.config.js",
     "test:watch": "npm run test -- --watch",
+    "test:cov": "npm run test -- --coverage",
+    "init:db": "npx sequelize db:migrate",
     "build:dev": "webpack --mode=development --progress --colors",
     "build:dist": "webpack --mode=production -p --progress --colors",
     "serve": "nodemon dist",
     "prestart": "npm run build:dev",
-    "start": "npx concurrently \"webpack --mode=development --watch\" \"nodemon dist \"",
-    "start:dist": "export PORT=8080 && npm run build:dist && npm run serve"
+    "start": "npx concurrently \"webpack --mode=development --watch\" \"npm run serve \"",
+    "start:dist": "export PORT=3000 && npm run build:dist && npm run serve"
   },
   "keywords": [
     "hcard",

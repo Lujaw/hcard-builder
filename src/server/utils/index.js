@@ -10,7 +10,7 @@ const normalizePort = (val) => {
   return false;
 };
 
-// handle the errors
+// error handling middleware
 const errorHandler = (err, req, res, next) => {
   if (res.headersSent) {
     return next(err);

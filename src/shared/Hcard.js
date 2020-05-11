@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import NotFound from "./NotFound";
 
 global.React = React;
 const HcardComponent = require("../shared/hCard.min.js").default;
@@ -35,10 +36,10 @@ class Hcard extends Component {
     }));
 
     this.props.fetchInitialData(card)
-        .then((cardData) => this.setState(() => ({
-          cardData,
-          loading: false
-        })));
+      .then((cardData) => this.setState(() => ({
+        cardData,
+        loading: false
+      })));
   }
   render() {
     const { loading, cardData } = this.state;
@@ -48,7 +49,7 @@ class Hcard extends Component {
     }
 
     if (cardData === null) {
-      return (<p> Could not find the card</p>);
+      return <NotFound />;
     }
 
     return (
