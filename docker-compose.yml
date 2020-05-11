@@ -1,0 +1,9 @@
+version: "2"
+services:
+  app:
+    container_name: hcard-builder-1
+    build: .
+    restart: always
+    entrypoint: /bin/sh -c "npm run init:db && npm run start:dist"
+    ports:
+      - "3000:3000"
