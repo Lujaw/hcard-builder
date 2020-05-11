@@ -40,7 +40,7 @@ const sampleCard = {
   "state": "NSW",
   "postcode": "2009",
   "country": "Australia",
-  "avatar": "/static/public/img/Avatar.png"
+  "avatar": "/static/public/img/avatar.png"
 };
 
 export {
