@@ -8,12 +8,11 @@ const initialData = {
   avatar: "/static/img/avatar.png"
 };
 
-
 const renderAppToString = (url, context) => {
   return renderToString(
-      <StaticRouter location={url} context={{ ...context }}>
-        <App />
-      </StaticRouter>
+    <StaticRouter location={url} context={{ ...context }}>
+      <App />
+    </StaticRouter>
   );
 };
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 const NotFound = () => {
   return (
     <div className='jumbotron text-center d-flex'>
@@ -17,6 +16,5 @@ const NotFound = () => {
     </div>
   );
 };
-
 
 export default NotFound;
