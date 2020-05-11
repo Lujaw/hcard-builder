@@ -15,6 +15,7 @@
 ## Requirements
 
 - node.js 12.x or above
+- react v15
 - docker (optional)
 
 ## Steps to run the App manually
@@ -32,7 +33,7 @@ docker-compose build
 docker-compose up
 ```
 
-Open the url http://localhost:3030
+Open the url http://localhost:3000
 
 ## Features
 
@@ -50,15 +51,15 @@ Open the url http://localhost:3030
     - Warning: React attempted to reuse markup in a container but the checksum was invalid.
 - Even tried migrating the code to version 16 using "React-codemod/React-PropTypes-to-prop-types"
   but since the code was minified, and it ran into some issues, abandoned the idea
-- Have used server side validation for the input which redirects to a page outside SPA with status 422 and json payload as response. Its not a good user experience. Could not use res.local object to flash the error message.
+- Have used server side validation for the input which redirects to a page outside SPA with status 422 and json response. Its not a good user experience. Could not use res.local object to flash the error message.
 
 ### Changes made on the provided main.js file:
 
-- Renamed it to hCard.js
-- Adding hidden card Id in the form and the state for the put operation
-- Using default value of "/static/img/Avatar.png" for the Avatar
-- Adding the id value to the params in update
-- Toggling the Submit button label when to Update for pre-existing cards
+- Renamed it to hCard.min.js
+- Added hidden card Id in the form and the state for the put operation
+- Used default value of "/static/img/avatar.png" for the Avatar
+- Added the id value to the params in update
+- Toggle the Submit button label to Update for pre-existing cards
 
 ### Explanation
 
@@ -74,3 +75,4 @@ Open the url http://localhost:3030
 - Add the upload function as right now, the upload doesn't trigger http request
 - Add tests for the client side code
 - Use localStorage to store the data
+- The ApiUrl in api.js is hardCoded, make it dynamic
