@@ -6,7 +6,13 @@ module.exports = {
     "<rootDir>/src/server/"
   ],
   "testPathIgnorePatterns": [
-    "<rootDir>/src/client/"
+    "<rootDir>/src/client/",
+    "<rootDir>/src/shared"
+  ],
+  "coveragePathIgnorePatterns": [
+    "/node_modules/",
+    "<rootDir>/src/client/",
+    "<rootDir>/src/shared/"
   ],
   "testMatch": ["**/tests/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
   "modulePathIgnorePatterns": [
@@ -21,10 +27,10 @@ module.exports = {
   },
   "coverageThreshold": {
     global: {
-      branches: 85,
-      functions: 85,
-      lines: 85,
-      statements: 85
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80
     }
   },
   "moduleFileExtensions": [

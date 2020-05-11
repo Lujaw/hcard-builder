@@ -11,9 +11,9 @@ const initialData = {
 
 const renderAppToString = (url, context) => {
   return renderToString(
-    <StaticRouter location={url} context={{ ...context }}>
-      <App />
-    </StaticRouter>
+      <StaticRouter location={url} context={{ ...context }}>
+        <App />
+      </StaticRouter>
   );
 };
 

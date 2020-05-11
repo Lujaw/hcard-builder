@@ -21,7 +21,7 @@ const mockNext = () => {
   return jest.fn();
 };
 
-// As the sequelize mock doesn't provide validation helpers, creating Validation Error for testing 
+// As the sequelize mock doesn't provide validation helpers, creating Validation Error for testing
 class SequelizeValidationError extends Error {
   constructor(message, errors) {
     super(message);

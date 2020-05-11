@@ -36,10 +36,10 @@ class Hcard extends Component {
     }));
 
     this.props.fetchInitialData(card)
-      .then((cardData) => this.setState(() => ({
-        cardData,
-        loading: false
-      })));
+        .then((cardData) => this.setState(() => ({
+          cardData,
+          loading: false
+        })));
   }
   render() {
     const { loading, cardData } = this.state;
