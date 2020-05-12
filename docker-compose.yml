@@ -1,7 +1,7 @@
 version: "2"
 services:
   app:
-    container_name: hcard-builder-1
+    container_name: hcard-builder
     build: .
     restart: always
     entrypoint: /bin/sh -c "npm run init:db && npm run start:dist"

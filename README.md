@@ -22,9 +22,9 @@
 ## Steps to run the App manually
 
 ```
-  npm i
-  npm run init:db
-  npm start
+npm i
+npm run init:db
+npm start
 ```
 
 ## Steps to run the App using docker
@@ -59,7 +59,7 @@ Open the url http://localhost:3000
 - Added hidden card Id in the form and the state for the put operation
 - Used default value of "/static/img/avatar.png" for the Avatar
 - Added the id value to the params in update
-- Toggle the Submit button label to Update for pre-existing cards
+- Toggle the Submit button label to "Update" for pre-existing cards
 
 ### Explanation
 
@@ -67,12 +67,12 @@ Open the url http://localhost:3000
   so that they can be retrieved/updated from the db
 - Chose to use sqlite db as its very light weight and suitable for this project.
   But for autoscaling, the db needs to be changed to Postgres, MySQL or similar.
-  It would be minimal change as we are using Sequelize ORM.
+  It would be minimal change as Sequelize ORM has been implemented.
 
 ## Enhancements to be done
 
 - Add delete functionality to the cards
-- Add the upload function as right now, the upload doesn't trigger http request
+- Add the upload avatar functionality
 - Add tests for the client side code
 - Use localStorage to store the data
 - The ApiUrl in api.js is hardCoded, make it dynamic
