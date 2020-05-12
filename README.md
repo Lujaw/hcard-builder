@@ -57,14 +57,15 @@ Open the url http://localhost:3000
 
 - Renamed it to hCard.min.js
 - Added hidden card Id in the form and the state for the put operation
-- Used default value of "/static/img/avatar.png" for the Avatar
 - Added the id value to the params in update
+- Triggering the update action only after the full Card model has been submitted
 - Toggle the Submit button label to "Update" for pre-existing cards
+- Used default value of "/static/img/avatar.png" for the Avatar
 
 ### Explanation
 
 - Chose to add hidden field with id value populated to uniquely identify the card,
-  so that they can be retrieved/updated from the db
+  so that they can be retrieved/updated from the db. Also, supressed the update action ("/update") for cards that haven't been created, as localstorage/cookies hasn't been implemented
 - Chose to use sqlite db as its very light weight and suitable for this project.
   But for autoscaling, the db needs to be changed to Postgres, MySQL or similar.
   It would be minimal change as Sequelize ORM has been implemented.
